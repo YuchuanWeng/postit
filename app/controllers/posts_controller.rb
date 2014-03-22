@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     #for specific and each post
     #render the show template
   end
