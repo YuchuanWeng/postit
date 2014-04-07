@@ -1,0 +1,20 @@
+<%= render 'shared/content_title', title: 'All the posts related to this category' %>
+
+<%= form_for [@category, @post] do |f| %>
+  <%= render 'shared/errors', obj: @category %>
+  <div class='control-group'>
+    <%= f.label :name, 'Category' %>
+<% end %>
+
+<h5>All the post from this category:</h5>
+
+<% @category.posts.each do |post| %>
+  <div class="well span8">
+    <en>"<%= post.title %>"</en>
+    <en>"<%= post.description %>"</en>
+    <br/>
+    <span class="quiet">by</span> <%= post.creator.username %>
+    <small>at <%= post.created_at %></small>
+  </div>
+<% end%>
+

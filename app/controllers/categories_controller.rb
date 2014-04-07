@@ -1,4 +1,14 @@
 class CategoriesController < ApplicationController
+  before_action :require_user, only: [:new, :create]
+
+  def show
+    @category = Category.find(category_params)
+    @category = Category.all
+    #@post = Post.find(params[:id])
+    #for specific and each post
+    #render the show template
+  end
+
   def new
     @category = Category.new
   end

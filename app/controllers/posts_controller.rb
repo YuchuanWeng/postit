@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
-
+  before_action :require_user, except: [:show, :index]
 
   def index
     @posts = Post.all
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    #@post = Post.find(params[:id])
     #for specific and each post
     #render the show template
   end
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
 
   def create
    @post = Post.new(post_params)
+   @post.creator = current_user
    if @post.save
      flash[:notice] = "Your post is created."
      redirect_to posts_path
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-   params.require(:post).permit!
+   params.require(:post).permit(:title, :description, category_ids: [])
   end
 
   def set_post
