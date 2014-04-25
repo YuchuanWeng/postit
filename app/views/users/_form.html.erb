@@ -1,6 +1,6 @@
 <div class='well'>
   <%= form_for @user do |f| %>
-  <%= render 'share/errors', obj: @user %>
+  <%= render 'shared/errors', obj: @user %>
   <div class='control-group'>
     <%= f.label :username %>
     <%= f.text_field :username %>
