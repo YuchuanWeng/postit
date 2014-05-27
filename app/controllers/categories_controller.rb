@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :require_user, only: [:new, :create]
+  before_action :require_admin, only: [:new, :create]
 
   def show
-    @category = Category.find(category_params)
+    @category = Category.find_by slugs: category_params
     @category = Category.all
     #@post = Post.find(params[:id])
     #for specific and each post

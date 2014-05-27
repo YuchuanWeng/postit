@@ -1,0 +1,6 @@
+<% if @vote.valid? %>
+  $("#post_<%= @post.slugs%>_votes").html("<%= @post.total_votes%> votes")
+<% else %>
+  alert("You can only vote once.");
+<% end %>
+// inside this file, you can also have the access to instance variable

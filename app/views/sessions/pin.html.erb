@@ -1,0 +1,16 @@
+<%= render 'shared/content_title', title: 'Enter Your Pin to Login'%>
+
+<P>
+  You will now receive a text message via your phone with the Pin code.<br/>
+  Please enter the PIN code so to successful login to your account.
+</p>
+
+<div class='well'>
+  <%= form_tag '/pin' do %>
+    <div class='control-group'>
+      <%= label_tag :pin, 'PIN Number' %>
+      <%= text_field_tag :pin, params[:pin] || '' %>
+    </div>
+    <%= submit_tag "Sumbit to Login", class: 'btn btn-success' %>
+  <% end %>
+</div>
